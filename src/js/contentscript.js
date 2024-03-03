@@ -58,12 +58,11 @@ $(document).ready(function() {
             });
 
             alert(response.choices[0].message.content)
-            chrome.runtime.sendMessage(
-              {
-                message: 'speak',
-                data: response.choices[0].message.content
-              },
-            ).then("handleResponse");
+            if(config.readEnabled){
+              var msg = new SpeechSynthesisUtterance(response.choices[0].message.content);
+              window.speechSynthesis.speak(msg);
+            }
+            // chrome.runtime.sendMessage({action: "readText", text: response.choices[0].message.content});
             
           }else{
             console.log("no text provided")

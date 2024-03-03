@@ -44,16 +44,22 @@ chrome.runtime.onInstalled.addListener(function() {
 
 // listen for messages from popup
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+   console.log('message received', request.message);
   if (request.message === 'updateConfig') {
     console.log('updateConfig event', request.data);
-    console.log('hola');
     store.update(request.data, sendResponse);
   } else if (request.message === 'getConfig') {
     console.log('getConfig event');
     store.getAll(sendResponse);
   }
-  else if(request.message === 'speak'){
-    chrome.tts.speak('Hello, world.');
+  else if(request.message === 'readText'){
+    window.speechSynthesis.speak(
+      new SpeechSynthesisUtterance(request.text)
+   );
+}
+else{
+  console.log('no action');
+  sendResponse(false);
 }
 
     // chrome.tts.speak(request.toSay, 

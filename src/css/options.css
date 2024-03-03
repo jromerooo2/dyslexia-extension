@@ -1,3 +1,8 @@
 #dyslexia-friendly-options {
   padding: 20px;
 }
+
+
+* {
+  font-family:'Inter',sans-serif;
+}

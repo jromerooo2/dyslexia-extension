@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head> </head>
+  <head> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+  </head>
 
   <body class="dyslexia-friendly-font-opendyslexic">
     <div id="dyslexia-friendly-ruler" data-show-when="rulerEnabled"></div>
     <div id="popup-wrapper">
       <form id="configForm" name="configForm">
         <div class="header">
-          <h1>Dyslexia Friendly</h1>
+          <h1>Dyslexia App</h1>
           <div class="form-check form-switch active-switch" id="master-switch">
             <input
               class="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-gray bg-no-repeat bg-contain bg-gray-300 focus:outline-none cursor-pointer shadow-sm"
@@ -51,6 +56,7 @@
                   Open Dyslexic
                 </label>
               </div>
+
               <div class="form-check">
                 <input
                   class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-gray-50 checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
@@ -66,6 +72,7 @@
                   Comic sans
                 </label>
               </div>
+              
             </div>
           </div>
           <div class="popup-section">
@@ -102,7 +109,34 @@
               </div>
             </div>
           </div>
+
+          ADD SUMMARIZATION HERE
+          <div class="popup-section">
+            <div class="popup-section-header">
+              <h2>Summarization</h2>
+              <div
+                class="form-check form-switch active-switch"
+                id="font-switch"
+              >
+                <input
+                  class="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-gray bg-no-repeat bg-contain bg-gray-300 focus:outline-none cursor-pointer shadow-sm"
+                  type="checkbox"
+                  role="switch"
+                  name="rulerEnabled"
+                  id="ruler-switch-checkbox"
+                />
+              </div>
+            </div>
+            <div class="popup-section-body" data-show-when="rulerEnabled">
+              <p>PUT SUMMARIZE TEXT HERE</p>
+              </div>
+            </div>
+          </div>
+          
+  
         </div>
+
+        
       </form>
     </div>
   </body>

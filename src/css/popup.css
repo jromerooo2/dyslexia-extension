@@ -1,0 +1,103 @@
+/* 
+ * copied from contentscript.css 
+ * TODO: reuse css
+ * */
+#dyslexia-friendly-ruler {
+  height: 1.6em;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 10000000000;
+}
+body.dyslexia-friendly-font-opendyslexic {
+  font-family: 'opendyslexic' !important;
+}
+
+body.dyslexia-friendly-font-comicsans {
+  font-family: 'Comic Sans MS' !important;
+}
+
+#popup-wrapper {
+  min-width: 350px;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+/* default */
+#popup-wrapper .show-when-enabled {
+  display: none;
+}
+#popup-wrapper .show-when-ruler {
+  display: none;
+}
+
+#popup-wrapper input[type='radio'] {
+  margin-top: 5px;
+}
+
+#popup-wrapper .header {
+  padding: 12px 20px 12px 32px;
+  background-color: #f7f8f9;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+#popup-wrapper .form-check-label {
+  font-size: 14px;
+  line-height: 150%;
+}
+
+#popup-wrapper .header h1 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 150%;
+}
+
+#popup-wrapper .active-switch {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#popup-wrapper .active-switch label {
+  font-size: 14px;
+  margin-left: 5px;
+  line-height: 150%;
+  margin-top: 3px;
+}
+
+#popup-wrapper .popup-section {
+  margin: 20px 20px 20px 32px;
+}
+
+#popup-wrapper .popup-section .popup-section-header {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+#popup-wrapper .popup-section h2 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 150%;
+}
+
+#popup-wrapper .example-ruler-width {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#popup-wrapper .ruler-size-label {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 150%;
+}

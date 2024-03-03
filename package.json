@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Increases readability of web pages by changing fonts, contrast and adding a reading ruler",
   "dependencies": {
+    "axios": "^1.6.7",
     "jquery": "^3.5.0",
     "materialize-css": "^1.0.0-rc.2",
     "string-replace-loader": "^3.1.0"

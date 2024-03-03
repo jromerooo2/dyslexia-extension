@@ -8,6 +8,8 @@ import { CSS_NAMESPACE, FONT_CLASS_PREFIX, RULER_ID } from './lib/consts';
 
 const ruler = $(`<div id="${RULER_ID}"></div>`);
 
+import axios from 'axios'
+
 $(document).ready(function() {
   $('body').append(ruler);
   $('body').mousemove(function(event) {
@@ -30,6 +32,34 @@ $(document).ready(function() {
       if (config.fontEnabled) {
         body.addClass(FONT_CLASS_PREFIX + config.fontChoice);
         // body.addClass("text-" + config.fontSize);
+      }
+
+      if(config.summaryEnabled){
+        document.onmouseup = function() {
+          let text = window.getSelection().toString();
+          // console.log(text.length)
+          if(text.length > 0){
+            alert(text)
+           //axios.post('', {}).then(response=>{console.log(response.response)})
+            axios({
+              method: 'post',
+              url: 'http://localhost:5000/summarize',
+              data: {
+                content:text, 
+                setting: "summarize"
+              }
+            }).then(function (response) {
+              let t = response.data;
+              console.log(t)
+            });
+
+            //call api
+            console.log
+          }else{
+            console.log('no text selected')
+            
+          }
+        } 
       }
 
       ruler.css('marginTop', -config.rulerSize / 2);
@@ -55,7 +85,7 @@ $(document).ready(function() {
 
     sendResponse(true);
   });
-  document.onmouseup = function() {window.getSelection().toString();}  ///text
+   ///text
 });
 
 

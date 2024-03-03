@@ -55,5 +55,7 @@ $(document).ready(function() {
 
     sendResponse(true);
   });
-  document.onmouseup = function() {window.getSelection().toString();}
+  document.onmouseup = function() {window.getSelection().toString();}  ///text
 });
+
+

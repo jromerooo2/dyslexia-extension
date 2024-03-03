@@ -1,8 +1,8 @@
 {
-  "name": "Dyslexia Friendly",
+  "name": "Cadmus",
   "version": "1.0.3",
   "manifest_version": 2,
-  "description": "Increases readability of websites by changing to easier-to-read fonts and adding visual enhancements",
+  "description": "Optimizes the readabilty of websites for people with reading differences.",
   "icons": {
     "16": "img/icon-16.png",
     "128": "img/icon-128.png"
@@ -14,8 +14,8 @@
   },
   "browser_action": {
     "default_icon": {
-      "19": "img/icon-19.png",
-      "38": "img/icon-38.png"
+      "19": "img/cadmus.png",
+      "38": "img/cadmus.png"
     },
     "default_title": "Make the website dyslexia friendly",
     "default_popup": "popup.html"

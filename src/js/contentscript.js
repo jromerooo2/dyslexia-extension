@@ -5,10 +5,13 @@ import $ from 'jquery';
 
 import { removeClassStartsWith } from './lib/util';
 import { CSS_NAMESPACE, FONT_CLASS_PREFIX, RULER_ID } from './lib/consts';
-
+import OpenAI from "openai";
 const ruler = $(`<div id="${RULER_ID}"></div>`);
 
-import axios from 'axios'
+const openai = new OpenAI({
+  apiKey: "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",
+  dangerouslyAllowBrowser: true 
+});
 
 $(document).ready(function() {
   $('body').append(ruler);
@@ -33,35 +36,36 @@ $(document).ready(function() {
         body.addClass(FONT_CLASS_PREFIX + config.fontChoice);
         // body.addClass("text-" + config.fontSize);
       }
-
       if(config.summaryEnabled){
-        document.onmouseup = function() {
-          let text = window.getSelection().toString();
-          // console.log(text.length)
-          if(text.length > 0){
-            alert(text)
-           //axios.post('', {}).then(response=>{console.log(response.response)})
-            axios({
-              method: 'post',
-              url: 'http://localhost:5000/summarize',
-              data: {
-                content:text, 
-                setting: "summarize"
-              }
-            }).then(function (response) {
-              let t = response.data;
-              console.log(t)
+        document.onmouseup = async function() {
+          let t = window.getSelection().toString(); 
+          if(t.length > 0){
+            const response = await openai.chat.completions.create({
+              model: "gpt-3.5-turbo",
+              messages: [
+                {
+                  "role": "system",
+                  "content": "Summarize the content you are provided."
+                },
+                {
+                  "role": "user",
+                  "content": t
+                }
+              ],
+              temperature: 0.7,
+              // max_tokens: 64,
+              top_p: 1,
             });
 
-            //call api
-            console.log
-          }else{
-            console.log('no text selected')
+            alert(response.choices[0].message.content)
+            chrome.runtime.sendMessage({toSay: response.choices[0].message.content}, function() {});
             
+          }else{
+            console.log("no text provided")
           }
-        } 
-      }
 
+        }
+      }
       ruler.css('marginTop', -config.rulerSize / 2);
       ruler.css('height', config.rulerSize);
       if (config.rulerEnabled) {
@@ -85,7 +89,4 @@ $(document).ready(function() {
 
     sendResponse(true);
   });
-   ///text
 });
-
-

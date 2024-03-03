@@ -58,7 +58,12 @@ $(document).ready(function() {
             });
 
             alert(response.choices[0].message.content)
-            chrome.runtime.sendMessage({toSay: response.choices[0].message.content}, function() {});
+            chrome.runtime.sendMessage(
+              {
+                message: 'speak',
+                data: response.choices[0].message.content
+              },
+            ).then("handleResponse");
             
           }else{
             console.log("no text provided")

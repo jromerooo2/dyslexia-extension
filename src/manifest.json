@@ -1,8 +1,8 @@
 {
-  "name": "Dyslexia Friendly",
+  "name": "Dyslexia Extension",
   "version": "1.0.3",
   "manifest_version": 2,
-  "description": "Increases readability of websites by changing to easier-to-read fonts and adding visual enhancements",
+  "description": "Increases readability of websites by changing to easier-to-read fonts and adding visual enhancements and summarizes highlighted content.",
   "icons": {
     "16": "img/icon-16.png",
     "128": "img/icon-128.png"

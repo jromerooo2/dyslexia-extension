@@ -52,7 +52,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     console.log('getConfig event');
     store.getAll(sendResponse);
   }
-  chrome.tts.speak('Hello, world.');
+  else if(request.message === 'speak'){
+    chrome.tts.speak('Hello, world.');
+}
 
     // chrome.tts.speak(request.toSay, 
     //   { rate: 0.8, onEvent: function(event) {}}, function() {});

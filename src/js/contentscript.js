@@ -16,7 +16,7 @@ $(document).ready(function() {
 
   function applyConfig(config) {
     console.log(
-      '[Dyslexia Friendly] applying user settings to webpage',
+      '4L',
       config
     );
     const body = $('body');
@@ -29,6 +29,7 @@ $(document).ready(function() {
       removeClassStartsWith(body, FONT_CLASS_PREFIX);
       if (config.fontEnabled) {
         body.addClass(FONT_CLASS_PREFIX + config.fontChoice);
+        // body.addClass("text-" + config.fontSize);
       }
 
       ruler.css('marginTop', -config.rulerSize / 2);
@@ -51,30 +52,8 @@ $(document).ready(function() {
         applyConfig(request.config);
         break;
     }
+
     sendResponse(true);
   });
+  document.onmouseup = function() {window.getSelection().toString();}
 });
-
-const returnSelection = () => {
-  return new Promise((resolve, reject) => {
-      if (window.getSelection) {
-          resolve(window.getSelection().toString())
-      } else if (document.getSelection) {
-          resolve(document.getSelection().toString())
-      } else if (document.selection) {
-          resolve(document.selection.createRange().text.toString())
-      } else reject();
-  })
-}
-
-chrome.runtime.onMessage.addListener(async (request, sender, response) => {
-  const { type } = request
-  if (type === "LOAD") {
-      try {
-          const selection = await returnSelection()
-          response(selection)
-      } catch (e) {
-          response()
-      }
-  }
-})
